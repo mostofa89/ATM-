@@ -2,16 +2,18 @@ def atm():
     print("Welcome to the ATM")
     pin = "1234"
     balance = 1000
-
+    counter = 0
+    
     while True:
         enter_pin = input("Please enter your four-digit PIN or type 'exit' to quit: ")
 
         if enter_pin == pin:
-            print("\n1. Check Balance")
-            print("2. Withdraw Money")
-            print("3. Deposit Money")
-            print("4. Change PIN")
-            print("5. Exit")
+            print(f"""1. Check Balance
+2. Withdraw Money
+3. Deposit Money
+4. Change PIN
+5. Exit""")
+            
 
             choice = input("\nPlease select a number: ")
             
@@ -42,9 +44,16 @@ def atm():
                 print("Invalid selection, please try again")
         
         elif enter_pin.lower() == "exit":
-            print("Bye")
+            print("Thank you!")
             break
         else:
-            print("\nIncorrect PIN, please try again")
+            counter += 1
+            if counter <= 2:
+                print(f"\nIncorrect PIN, please try again. You have {3 - counter} chance otherwise your card will be capture.")
+
+            else:
+                print(f"Your card has been capture. Please contract your helpline.")
+                break
+            
 
 atm()
